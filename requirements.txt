@@ -15,8 +15,9 @@ wincertstore==0.2
 xgboost==1.6.2
 pandas
 numpy
-sklearn
+scikit-learn
 seaborn
 matplotlib
 catboost
+PyYAML
 -e .
