@@ -8,7 +8,7 @@ from sensor import utils
 from sklearn.metrics import f1_score
 
 class ModelTrainer:
-    def __init__(self,model_trainer_cofig : config_entity.ModelTrainerConfig,data_transformation_artifact : artifact_entity.DataTransformationArtifact):
+    def __init__(self,model_trainer_config : config_entity.ModelTrainerConfig, data_transformation_artifact : artifact_entity.DataTransformationArtifact):
         try:
             logging.info(f"{'>>'*20} Model Trainer {'<<'*20}")
             self.model_trainer_config=model_trainer_config
@@ -21,26 +21,28 @@ class ModelTrainer:
     def fine_tune():
         pass
 
-    def train_model(self,X,y):
+    def train_model(self,x,y):
         try:
             xgb_clf = XGBClassifier()
-            xgb_clf.fit(X,y)
+            xgb_clf.fit(x,y)
             return xgb_clf
         except Exception as e:
             raise SensorException(e,sys)
 
 
-    def initiate_model_trainer():
+    def initiate_model_trainer(self):
         logging.info(f"Loading train and test array")
         train_arr = utils.load_numpy_array_data(file_path = self.data_transformation_artifact.transformed_train_path)
         test_arr = utils.load_numpy_array_data(file_path = self.data_transformation_artifact.transformed_test_path)
 
-        logging.info(f"Splitting input and target feature from both train and test array")
-        X_train, y_train = train_arr[:,:-1],train_arr[:-1]
-        X_test, y_test = test_arr[:,:-1],test_arr[:-1]
+        logging.info(f"Splitting input and target feature from both train and test arr.")
+        x_train,y_train = train_arr[:,:-1],train_arr[:,-1]
+        x_test,y_test = test_arr[:,:-1],test_arr[:,-1]
 
+        print(y_train.shape)
+    
         logging.info(f"Train the model")
-        model = self.train_model(X =X_train, y = y_train)
+        model = self.train_model(x =x_train, y = y_train)
 
         logging.info(f"Calculating f1 train score")
         yhat_train = model.predict(x_train)
