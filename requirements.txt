@@ -20,4 +20,5 @@ seaborn
 matplotlib
 catboost
 PyYAML
+apache-airflow
 -e .
