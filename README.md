@@ -1,2 +1,1 @@
-# aps-fault-detection
-Project
+# aps-fault-detection Project
