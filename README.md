@@ -6,7 +6,9 @@
 Air Pressure System failure is common in heavy vehicles and the service and maintenance costs for such failures are high. Therefore, the task at hand is to develop a solution that would help in predicting this failure in trucks to minimize total cost of making false prediction.
 
 Total Cost(metric) = Cost 1 * False Positives + Cost 2 * False Negatives
+
 Cost 1 : An unnecessary check done by a mechanic ($10)
+
 Cost 2 : Missing a faulty truck, which may cause a future breakdown ($500) 
 
 
