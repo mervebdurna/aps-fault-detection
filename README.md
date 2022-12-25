@@ -25,9 +25,9 @@ After experimenting different type of pre-processing step and Ml model combinati
 
 
 # 6. Used Technologies
-* Python (scikit-learn, paandas, numpy, ...)
+* Python (scikit-learn, pandas, numpy,...)
 * MongoDB 
-* Git
+* Git/GitHub
 * Git Actions
 * Docker
 * Airflow
